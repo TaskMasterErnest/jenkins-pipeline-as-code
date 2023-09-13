@@ -28,10 +28,10 @@ variable "build_name" {
   type = string
   default = "master"
 }
-// variable "ssh_key_path" {
-//   type = string
-//   default = "/home/ernestklu/.ssh/jnks-mstr-pkr"
-// }
+variable "ssh_key_path" {
+  type = string
+  default = "/home/ernestklu/.ssh/jnks-mstr-pkr"
+}
 
 source "amazon-ebs" "jenkins_master" {
   ami_name      = "${var.ami_name}"
@@ -55,6 +55,21 @@ build {
     "source.amazon-ebs.jenkins_master"
   ]
 
+  provisioner "file" {
+    source = "./scripts"
+    destination = "/tmp/scripts"
+  }
+
+  provisioner "file" {
+    source = "./config"
+    destination = "/tmp/config"
+  }
+
+  provisioner "file" {
+    source = "${var.ssh_key_path}"
+    destination = "/tmp/id_rsa"
+  }
+  
   provisioner "shell" {
     execute_command = "sudo -E -S sh '{{ .Path }}'"
     script          = "./setup.sh"
