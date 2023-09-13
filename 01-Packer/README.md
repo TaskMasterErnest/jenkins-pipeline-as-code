@@ -5,6 +5,10 @@
 - I have written them in the `.pkr.hcl` extension and in YAML but it can be written in JSON too.
 - You need to have [Packer](https://developer.hashicorp.com/packer/downloads) installed on the local machine and [AWS CLI](https://aws.amazon.com/cli/) installed and configured. ( Click on the names to go the respective documentation ).
 
+## Figure
+
+![](./assets/jenkin-packer.png)
+
 ## CheckList
 - [ ] Jenkins Master AMI Configuration
 - [ ] Jenkins Worker AMI Configuration
