@@ -5,6 +5,12 @@
 - I have written them in the `.pkr.hcl` extension and in YAML but it can be written in JSON too.
 - You need to have [Packer](https://developer.hashicorp.com/packer/downloads) installed on the local machine and [AWS CLI](https://aws.amazon.com/cli/) installed and configured. ( Click on the names to go the respective documentation ).
 
+## CheckList
+- [ ] Jenkins Master AMI Configuration
+- [ ] Jenkins Worker AMI Configuration
+- [ ] Tips
+- [ ] Running the configurations
+
 
 ## Master Jenkins AMI Configuration
 - In this configuration are the following scripts:
@@ -34,4 +40,37 @@
 - The focus is on the scripts in the `/config` directory. These scripts are used to mainly install Jenkins plugins and set the environment for Jenkins to start work.
   - the `install-plugins.sh` script is for automating the installation and management of Jenkins plugins in a Jenkins instance
   - the `plugins.txt` file contains all the plugins to be installed on the Jenkins instance.
-  - the `jenkins` file contains a set of settings for configuring the Jenkins Automation Server when it's installed and running as a service on a Unix-based system
+  - the `jenkins` file contains a set of settings for configuring the Jenkins Automation Server when it's installed and running as a service on a Unix-based system.
+
+
+## Worker Jenkins AMI Configuration
+- In this configuration, we have the following:
+  - a `template.pkr.hcl` file that contains the code to build the Jenkins worker AMI.
+  - a `setup.sh` script to configure the installation of Git, Java and Docker on the AMI.
+
+- There are no other configurations needed to work on the Jenkins worker.  Docker is essential as the project needs to have Dockerized microservices which will have to be provisioned by some CI/CD pipelines.
+
+
+## Tips
+- In the `/master/scripts/basic-security.groovy` script, change the username and password to match your preference.
+  - a handy command to generate a strong password is `openssl rand -base64 24`. It creates a strong password; with lowercase, special, uppercase, numbers. This particular command creates a 24-character long password, tweak the number to your preferred choice.
+- generate a pair of SSH keys with the `ssh-keygen` command. This special key will be used in the `master/template.pkr.hcl` script to send a special private SSH key to the master Jenkins instance to be used for authenticating the workers.
+
+
+## Running the Configurations
+- Look through the master and worker configurations and set your own values.
+- If you have successfully integrated you Access Key and Secret Access Key with the AWS CLI, Packer will pick them up by default when you spin it up.
+- First, initialize the template with 
+```bash
+packer init master/template.pkr.hcl
+```
+- Then, validate the configuration template with
+```bash
+packer validate master/template.pkr.hcl
+```
+- Finally, build the AMI with the command
+```bash
+packer build master/template.pkr.hcl
+```
+- Wait as Packer builds the AMI on AWS, you can follow the progress on the output from the CLI.
+- Check the `Testing the Master Jenkins Server` instructions on how to connect and eventually disconnect and clear up the AMIs when you are done.
