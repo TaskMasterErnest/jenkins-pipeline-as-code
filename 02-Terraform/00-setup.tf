@@ -12,6 +12,9 @@ terraform {
     http = {
       source = "hashicorp/http" # https://registry.terraform.io/providers/hashicorp/http/latest
     }
+    template = {
+      source = "hashicorp/template"
+    }
   }
 }
 

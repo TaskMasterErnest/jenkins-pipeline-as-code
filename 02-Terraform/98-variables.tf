@@ -113,3 +113,27 @@ variable "domain_name" {
   type = string
   default = "thetaskmasterernest.cyou"
 }
+
+
+# JENKINS WORKER VARIABLES
+######################################################################################################
+variable "jenkins_username" {
+  description = "Jenkins admin username"
+  type = string
+}
+
+variable "jenkins_password" {
+  description = "Jenkins admin password"
+  type = string 
+}
+
+variable "jenkins_credentials_id" {
+  description = "Jenkins worker SSH-based credentials ID"
+  type = string 
+}
+
+variable "jenkins_worker_instance_type" {
+  description = "Jenkins worker EC2 instance type"
+  type = string 
+  default = "t2.medium"
+}
