@@ -83,3 +83,33 @@ variable "ami_filter_virtualization_type" {
   type = string
   default = "hvm"
 }
+
+
+# Jenkins Master Variables
+######################################################################################################
+variable "jenkins_master_instance_type" {
+  description = "which instance type should be used for the master?"
+  type = string
+  default = "t2.large"
+}
+
+
+# AWS SSL ARN Variables
+######################################################################################################
+variable "ssl_arn" {
+  description = "the SSL ARN from the ACM"
+  type = string
+  default = "arn:aws:acm:eu-west-2:478429420160:certificate/63d4c16e-e92d-4e4a-a2fe-9c25ddde893e"
+}
+
+variable "hosted_zone_id" {
+  description = "The ID of the Hosted Zone"
+  type = string
+  default = "Z020009338AOOFJJHZ7EE"
+}
+
+variable "domain_name" {
+  description = "The domain name that is hosted"
+  type = string
+  default = "thetaskmasterernest.cyou"
+}
