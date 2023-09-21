@@ -15,7 +15,7 @@ sudo dnf install jenkins -y
 sudo chkconfig jenkins on
 
 echo ">>>>>>>>>> Setup SSH key"
-mkdir /var/lib/jenkins/.ssh
+mkdir -p /var/lib/jenkins/.ssh
 touch /var/lib/jenkins/.ssh/known_hosts
 chown -R jenkins:jenkins /var/lib/jenkins/.ssh
 chmod 700 /var/lib/jenkins/.ssh
