@@ -90,7 +90,7 @@ variable "ami_filter_virtualization_type" {
 variable "jenkins_master_instance_type" {
   description = "which instance type should be used for the master?"
   type = string
-  default = "t2.large"
+  default = "t3.large"
 }
 
 
@@ -135,5 +135,5 @@ variable "jenkins_credentials_id" {
 variable "jenkins_worker_instance_type" {
   description = "Jenkins worker EC2 instance type"
   type = string 
-  default = "t2.medium"
+  default = "t3.medium"
 }

@@ -73,7 +73,7 @@ resource "aws_autoscaling_group" "jenkins_workers" {
   vpc_zone_identifier = [aws_subnet.private_subnet01.id, aws_subnet.private_subnet02.id]
 
   min_size = 2
-  max_size = 10
+  max_size = 4
 
   depends_on = [aws_instance.jenkins_master, aws_elb.jenkins_elb]
 

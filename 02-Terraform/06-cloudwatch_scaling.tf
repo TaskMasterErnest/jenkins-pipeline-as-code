@@ -19,7 +19,7 @@ resource "aws_cloudwatch_metric_alarm" "high_cpu_jenkins_workers_alarm" {
   namespace = "AWS/EC2"
   period = "120"
   statistic = "Average"
-  threshold = "80"
+  threshold = "90"
 
   dimensions = {
     AutoScalingGroupName = aws_autoscaling_group.jenkins_workers.name
