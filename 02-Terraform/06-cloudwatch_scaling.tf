@@ -19,7 +19,7 @@ resource "aws_cloudwatch_metric_alarm" "high_cpu_jenkins_workers_alarm" {
   namespace = "AWS/EC2"
   period = "120"
   statistic = "Average"
-  threshold = "90"
+  threshold = "95"
 
   dimensions = {
     AutoScalingGroupName = aws_autoscaling_group.jenkins_workers.name
@@ -33,7 +33,7 @@ resource "aws_cloudwatch_metric_alarm" "high_cpu_jenkins_workers_alarm" {
 # create an autoscaling policy
 resource "aws_autoscaling_policy" "scale_in" {
   name = "${var.name}-${var.environment_type}-scale_in_jenkins_workers"
-  scaling_adjustment = 1
+  scaling_adjustment = -1
   adjustment_type = "ChangeInCapacity"
   cooldown = 300
   autoscaling_group_name = aws_autoscaling_group.jenkins_workers.name
