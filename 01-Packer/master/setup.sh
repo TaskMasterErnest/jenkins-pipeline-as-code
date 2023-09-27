@@ -19,9 +19,9 @@ mkdir -p /var/lib/jenkins/.ssh
 touch /var/lib/jenkins/.ssh/known_hosts
 chown -R jenkins:jenkins /var/lib/jenkins/.ssh
 chmod 700 /var/lib/jenkins/.ssh
-mv /tmp/id_jenkins_ssh /var/lib/jenkins/.ssh/id_jenkins_ssh
-chmod 600 /var/lib/jenkins/.ssh/id_jenkins_ssh
-chown -R jenkins:jenkins /var/lib/jenkins/.ssh/id_jenkins_ssh
+mv /tmp/id_rsa /var/lib/jenkins/.ssh/id_rsa
+chmod 600 /var/lib/jenkins/.ssh/id_rsa
+chown -R jenkins:jenkins /var/lib/jenkins/.ssh/id_rsa
 
 echo ">>>>>>>>>> Configure Jenkins"
 mkdir -p /var/lib/jenkins/init.groovy.d
