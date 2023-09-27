@@ -67,7 +67,7 @@ build {
 
   provisioner "file" {
     source = "${var.ssh_key_path}"
-    destination = "/tmp/id_rsa"
+    destination = "/tmp/id_jenkins_ssh"
   }
   
   provisioner "shell" {
