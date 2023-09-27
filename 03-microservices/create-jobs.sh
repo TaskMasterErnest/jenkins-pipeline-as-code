@@ -3,7 +3,7 @@
 # Replace the following placeholders with actual values:
 USER="your_username"
 API_TOKEN="your_api_token"
-JENKINS_HOST="jenkins.example.com"
+JENKINS_HOST="jenkins.thetaskmasterernest.cyou"
 
 # Define an array of job names and corresponding XML configuration files
 job_names=("job1" "job2" "job3" "job4")

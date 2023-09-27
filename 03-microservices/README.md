@@ -84,3 +84,5 @@ Zip this file up to be sent to AWS with the command `zip deployment.zip index.js
 - the `terraform/apigateway.tf` file contains code to define the API Gateway to trigger when a POST request hits the /webhook endpoint.
 - the `terraform/outputs.tf` file contains a specification to output the payload URL that is generated to be used in the Webhook integration with GitHub.
 - the `terraform/variables.tf` file contains the variables needed to configure the Terraform scripts.
+
+The generated URL has to be applied to the payload URL of every microservice repo.
