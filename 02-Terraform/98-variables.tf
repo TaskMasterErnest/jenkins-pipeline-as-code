@@ -75,7 +75,7 @@ variable "ami_owners" {
 variable "ami_filter_name" {
   description = "which AMI should be used"
   type = string
-  default = "al2023-ami-2023.1.20230906.1-kernel-6.1-x86_64"
+  default = "amzn2-ami-hvm-*-x86_64-gp2"
 }
 
 variable "ami_filter_virtualization_type" {
@@ -99,19 +99,16 @@ variable "jenkins_master_instance_type" {
 variable "ssl_arn" {
   description = "the SSL ARN from the ACM"
   type = string
-  default = "arn:aws:acm:eu-west-2:478429420160:certificate/63d4c16e-e92d-4e4a-a2fe-9c25ddde893e"
 }
 
 variable "hosted_zone_id" {
   description = "The ID of the Hosted Zone"
   type = string
-  default = "Z020009338AOOFJJHZ7EE"
 }
 
 variable "domain_name" {
   description = "The domain name that is hosted"
   type = string
-  default = "thetaskmasterernest.cyou"
 }
 
 
