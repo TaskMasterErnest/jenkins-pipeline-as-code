@@ -9,6 +9,7 @@ INSTANCE_NAME=$(curl -s 169.254.169.254/latest/meta-data/local-hostname)
 INSTANCE_IP=$(curl -s 169.254.169.254/latest/meta-data/local-ipv4)
 JENKINS_CREDENTIALS_ID="${jenkins_credentials_id}"
 
+
 curl -v -u $JENKINS_USERNAME:$JENKINS_PASSWORD --cookie "$COOKIEJAR" -H "$TOKEN" -d 'script=
 import hudson.model.Node.Mode
 import hudson.slaves.*
