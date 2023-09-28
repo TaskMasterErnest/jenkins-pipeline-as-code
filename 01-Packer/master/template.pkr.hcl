@@ -22,7 +22,7 @@ variable "default_region" {
 }
 variable "image_name" {
   type = string
-  default = "al2023-ami-2023.1.20230906.1-kernel-6.1-x86_64"
+  default = "amzn2-ami-amd-hvm-2.0.20230221.0-x86_64-gp2"
 }
 variable "build_name" {
   type = string
@@ -68,6 +68,11 @@ build {
   provisioner "file" {
     source = "${var.ssh_key_path}"
     destination = "/tmp/id_rsa"
+  }
+
+  provisioner "file" {
+    source = "./plugins"
+    destination = "/tmp/plugins"
   }
   
   provisioner "shell" {
